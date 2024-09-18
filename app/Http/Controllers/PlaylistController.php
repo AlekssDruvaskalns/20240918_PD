@@ -47,10 +47,10 @@ class PlaylistController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Playlist $playlist)
     {
     // Retrieve the playlist by its ID
-    $playlist = Playlist::findOrFail($id);
+    // $playlist = Playlist::findOrFail($id);
     
     // Pass the playlist to the view
     return view('playlist.edit', ['playlist' => $playlist]);
@@ -68,7 +68,7 @@ class PlaylistController extends Controller
     ]);
 
     // Find the playlist and update its attributes
-    $playlist = Playlist::findOrFail($id);
+    $playlist = Playlist::findOrFail($playlist);
     $playlist->update([
         'name' => $request->input('name'),
         'tag' => $request->input('tag'),
